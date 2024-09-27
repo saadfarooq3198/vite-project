@@ -1,25 +1,66 @@
-// import './style.css'
 import './app.css'
-import javascriptLogo from './javascript.svg'
-import viteLogo from '/vite.svg'
-import { setupCounter } from './counter.js'
 
-document.querySelector('#app').innerHTML = `
+//  tech blog section DRY
+ const blogs = [
+  {
+    'heading' : 'This Is Your Brain On Helium',
+    'text' : "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorum, voluptate mollitia voluptates iure harum autem facere aut cum. Dolorem, molestias animi nisi esse quam quo optio! Quidem nobis",
+    'date' : 'May 19, 2025'
+  },
+  {
+    'heading' : 'In Search Of Intelligence',
+    'text' : "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorum, voluptate mollitia voluptatesiure harum autem facere aut cum. Dolorem, molestias animi nisi esse quam quo optio! Quidem nobis inventore voluptatum.",
+    'date' : 'June 12, 2025'
+  },
+  {
+    'heading' : 'Should Public Transit Be Free?',
+    'text' : "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorum, voluptate mollitia voluptates iure harum autem facere aut cum. Dolorem, molestias animi nisi esse quam quo optio! Quidem nobis",
+    'date' : 'March 17, 2025'
+  },
+ ];
+
+ const speaking = [
+  {
+    'title': 'NY Economics Forum',
+    'location': 'New York, NY',
+    'date': 'August 25th 2025, 7:00pm'
+  },
+  {
+    'title': 'Emerging Tech Meet-Up',
+    'location': 'San Francisco, CA',
+    'date': 'August 25th 2025, 7:00pm'
+  },
+  {
+    'title': 'Creative Code Meetup',
+    'location': 'Denver, CO',
+    'date': 'August 25th 2025, 7:00pm'
+  },
+ ];
+
+ const blogSection = document.querySelector('.blog-posts');
+
+ blogs.forEach(post =>  {
+  const blogItem = 
+  `
   <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="${viteLogo}" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">
-      <img src="${javascriptLogo}" class="logo vanilla" alt="JavaScript logo" />
-    </a>
-    <h1>Hello Vite!</h1>
-    <div class="card">
-      <button id="counter" type="button"></button>
-    </div>
-    <p class="read-the-docs">
-      Click on the Vite logo to learn more
-    </p>
+  <p class="blog-heading">${post.heading}</p>
+  <p class="blog-text">${post.text}</p>
+  <p class="blog-date">${post.date}</p>
   </div>
-`
+  `;
+  blogSection.innerHTML += blogItem;
+ });
 
-setupCounter(document.querySelector('#counter'))
+//  dynamically render speaking events
+
+const eventSection = document.querySelector(".events-card");
+ speaking.forEach(event => {
+  const eventItem = `
+  <div>
+  <p class="event-title">${event.title}</p>
+  <p class="event-location">${event.location}</p>
+  <p class="event-date">${event.date}</p>
+  </div>
+  `;
+  eventSection.innerHTML += eventItem;
+ });
